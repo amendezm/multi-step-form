@@ -11,4 +11,6 @@
 body {
   width: 100%;
   overflow-x: hidden;
+  font-family: "Archivo", sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
