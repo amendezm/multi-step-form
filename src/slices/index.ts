@@ -1,1 +1,1 @@
-export * from "./step-slice"
+export * from "./step.slice"

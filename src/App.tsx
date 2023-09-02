@@ -1,17 +1,20 @@
-import { useStore } from "./store"
+import { AppLayout } from "@/layouts"
 
 function App() {
-  const { step, prev, next } = useStore(state => ({
-    step: state.step,
-    next: state.nextStep,
-    prev: state.prevStep
-  }))
-
   return (
-    <main className="h-screen grid place-content-center">
-      <h1 className="text-4xl font-bold text-blue-500">{step}</h1>
-      <button onClick={prev}>prev</button>
-      <button onClick={next}>next</button>
+    <main className="min-h-screen py-12 grid place-content-center bg-magnolia">
+      <AppLayout>
+        <aside>
+          <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+          </ul>
+        </aside>
+        <h1 className="text-marine-blue">Hello World</h1>
+      </AppLayout>
     </main>
   )
 }
