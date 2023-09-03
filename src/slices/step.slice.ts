@@ -4,6 +4,7 @@ export interface StepsSlice {
   step: number
   prevStep(): void
   nextStep(): void
+  resetStep(): void
 }
 
 export const createStepsSlice: StateCreator<StepsSlice> = set => ({

@@ -20,7 +20,14 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "baseUrl": "src",
-    "paths": { "@/components": ["./components/index.ts"], "@/layouts": ["./layouts/index.ts"] }
+    "paths": {
+      "@store": ["./store.ts"],
+      "@/assets": ["./assets"],
+      "@/components": ["./components/index.ts"],
+      "@/layouts": ["./layouts/index.ts"],
+      "@/hooks": ["./hooks/index.ts"],
+      "@/utils": ["./utils/index.ts"]
+    }
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
