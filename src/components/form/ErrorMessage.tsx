@@ -2,10 +2,10 @@ import { FC } from "react"
 import { useFormContext } from "react-hook-form"
 
 interface ErrorProps {
-  name: string
+  name?: string
 }
 
-export const ErrorMessage: FC<ErrorProps> = ({ name }) => {
+export const ErrorMessage: FC<ErrorProps> = ({ name = "" }) => {
   const {
     formState: { errors }
   } = useFormContext()
