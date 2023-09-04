@@ -1,4 +1,4 @@
-import { Field, Form } from "@/components"
+import { Button, Field, Form } from "@/components"
 import { ButtonsLayout, FormLayout } from "@/layouts"
 
 export const PersonalInfo = () => {
@@ -34,8 +34,10 @@ export const PersonalInfo = () => {
           inputMode="tel"
         />
         <ButtonsLayout>
-          <button>Cancel</button>
-          <button>Submit</button>
+          <Button type="submit" secondary>
+            Go Back
+          </Button>
+          <Button type="submit">Next Step</Button>
         </ButtonsLayout>
       </FormLayout>
     </Form>
