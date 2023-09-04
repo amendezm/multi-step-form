@@ -1,4 +1,5 @@
 import { Field, Form } from "@/components"
+import { ButtonsLayout, FormLayout } from "@/layouts"
 
 export const PersonalInfo = () => {
   return (
@@ -6,31 +7,37 @@ export const PersonalInfo = () => {
       onSubmit={data => {
         console.log(data)
       }}
-      className="space-y-5"
+      className="h-full"
     >
-      <Field
-        name="name"
-        label="Name"
-        placeholder="e.g. Stephen King"
-        options={{
-          required: true
-        }}
-        inputMode="text"
-      />
-      <Field
-        name="email"
-        label="Email Address"
-        placeholder="e.g. stephenking@lorem.com"
-        options={{ required: true, validate: { invalidEmail: validateEmail } }}
-        inputMode="email"
-      />
-      <Field
-        name="phone"
-        label="Phone Number"
-        placeholder="e.g. +1 234 567 890"
-        options={{ required: true, validate: { invalidPhoneNumber: validatePhoneNumber } }}
-        inputMode="tel"
-      />
+      <FormLayout>
+        <Field
+          name="name"
+          label="Name"
+          placeholder="e.g. Stephen King"
+          options={{
+            required: true
+          }}
+          inputMode="text"
+        />
+        <Field
+          name="email"
+          label="Email Address"
+          placeholder="e.g. stephenking@lorem.com"
+          options={{ required: true, validate: { invalidEmail: validateEmail } }}
+          inputMode="email"
+        />
+        <Field
+          name="phone"
+          label="Phone Number"
+          placeholder="e.g. +1 234 567 890"
+          options={{ required: true, validate: { invalidPhoneNumber: validatePhoneNumber } }}
+          inputMode="tel"
+        />
+        <ButtonsLayout>
+          <button>Cancel</button>
+          <button>Submit</button>
+        </ButtonsLayout>
+      </FormLayout>
     </Form>
   )
 }
