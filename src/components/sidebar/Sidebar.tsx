@@ -8,8 +8,6 @@ const stepsTitles = ["Your Info", "Select Plan", "Add-Ons", "Summary"]
 export const Sidebar = () => {
   const { step } = useSteps()
 
-  console.log(step)
-
   return (
     <div className="w-full h-full relative">
       <img src={sidebarBg} className="absolute rounded-xl h-full w-full object-cover z-10" />

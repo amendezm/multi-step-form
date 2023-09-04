@@ -10,7 +10,6 @@ export const Input: FC<InputProps> = ({ options = {}, name = "", className, ...p
     formState: { errors }
   } = useFormContext()
 
-  console.log(errors)
   return (
     <input
       className={classNames(
