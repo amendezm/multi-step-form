@@ -1,13 +1,16 @@
 import { create } from "zustand"
 import { devtools, persist } from "zustand/middleware"
 
-import { createStepsSlice, StepsSlice } from "./slices"
+import { createStepsSlice, StepsSlice, createPersonalInfoSlice, PersonalInfoSlice } from "./slices"
 
-export const useStore = create<StepsSlice, [["zustand/devtools", never], ["zustand/persist", StepsSlice]]>(
+type StoreType = StepsSlice & PersonalInfoSlice
+
+export const useStore = create<StoreType, [["zustand/devtools", never], ["zustand/persist", StoreType]]>(
   devtools(
     persist(
       (...a) => ({
-        ...createStepsSlice(...a)
+        ...createStepsSlice(...a),
+        ...createPersonalInfoSlice(...a)
       }),
       { name: "@store" }
     )
