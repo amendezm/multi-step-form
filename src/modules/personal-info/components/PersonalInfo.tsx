@@ -1,11 +1,17 @@
 import { Button, Field, Form } from "@/components"
 import { ButtonsLayout, FormLayout } from "@/layouts"
+import { usePersonalInfo, useSteps } from "@/hooks"
 
 export const PersonalInfo = () => {
+  const { info, saveInfo } = usePersonalInfo()
+  const { nextStep } = useSteps()
+
   return (
     <Form
+      defaultValues={info}
       onSubmit={data => {
-        console.log(data)
+        saveInfo(data)
+        nextStep()
       }}
       className="h-full"
     >
