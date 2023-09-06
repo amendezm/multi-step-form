@@ -40,9 +40,6 @@ export const PersonalInfo = () => {
           inputMode="tel"
         />
         <ButtonsLayout>
-          <Button type="submit" secondary>
-            Go Back
-          </Button>
           <Button type="submit">Next Step</Button>
         </ButtonsLayout>
       </FormLayout>
