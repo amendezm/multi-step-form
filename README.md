@@ -27,7 +27,9 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![image](https://github.com/amendezm/multi-step-form/assets/26444448/49d91c80-d9b8-4f89-b931-83d79a6945d2)
+
+
 
 
 ### Links
