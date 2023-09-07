@@ -13,12 +13,11 @@ export const PlanOptions = () => {
     watch,
     setValue
   } = useFormContext<Plan>()
-  const [isMonthlyPlanSelected, setIsMonthlyPlanSelected] = useState(plan?.type === "monthly")
+  const [isMonthlyPlanSelected, setIsMonthlyPlanSelected] = useState(plan?.type === "yearly")
   const [selectedPlanName, setSelectedPlanName] = useState(plan?.name)
 
-  const handlePlanOptionClick = (name: string, price: number) => {
+  const handlePlanOptionClick = (name: string) => {
     setValue("name", name)
-    setValue("price", price)
   }
 
   useEffect(() => {
@@ -30,6 +29,15 @@ export const PlanOptions = () => {
     return () => subscription.unsubscribe()
   }, [watch])
 
+  useEffect(() => {
+    const { monthlyPrice, yearlyPrice } = planOptions.find(({ name }) => name === selectedPlanName)!
+    if (isMonthlyPlanSelected) {
+      setValue("price", monthlyPrice)
+      return
+    }
+    setValue("price", yearlyPrice)
+  }, [isMonthlyPlanSelected, selectedPlanName, setValue])
+
   return (
     <ul className="grid grid-cols-3 gap-4">
       {planOptions.map(({ name, monthlyPrice, yearlyPrice, icon }, index) => (
@@ -40,7 +48,7 @@ export const PlanOptions = () => {
             price={isMonthlyPlanSelected ? monthlyPrice : yearlyPrice}
             isMonthlyPlan={isMonthlyPlanSelected}
             isSelected={name === selectedPlanName}
-            onClick={() => handlePlanOptionClick(name, isMonthlyPlanSelected ? monthlyPrice : yearlyPrice)}
+            onClick={() => handlePlanOptionClick(name)}
           />
         </li>
       ))}

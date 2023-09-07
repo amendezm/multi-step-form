@@ -1,15 +1,13 @@
-import { Button, Form, Switch } from "@/components"
+import { Button, Form } from "@/components"
 import { ButtonsLayout, FormLayout } from "@/layouts"
 import { usePlan, useSteps } from "@/hooks"
 
 import { PlanOptions } from "./PlanOptions"
-import { useState } from "react"
+import { PlanTypeSelector } from "./PlanTypeSelector"
 
 export const Plans = () => {
   const { prevStep, nextStep } = useSteps()
   const { plan, savePlan } = usePlan()
-
-  const [checked, setChecked] = useState(false)
 
   return (
     <Form
@@ -22,7 +20,7 @@ export const Plans = () => {
     >
       <FormLayout>
         <PlanOptions />
-        <Switch checked={checked} onChange={setChecked} />
+        <PlanTypeSelector />
         <ButtonsLayout>
           <Button secondary onClick={prevStep}>
             Go Back

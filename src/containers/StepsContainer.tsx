@@ -12,7 +12,7 @@ export const StepsContainer = () => {
   return (
     <div className="h-full flex flex-col px-16 pt-8 pb-4">
       <h1 className="text-3xl text-marine-blue font-bold mb-2">{title}</h1>
-      <p className="text-cool-gray tracking-tight mb-8">{description}</p>
+      <p className="text-cool-gray tracking-tight mb-8 font-medium">{description}</p>
       {renderElement}
     </div>
   )
