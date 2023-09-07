@@ -1,19 +1,28 @@
 import { Button, Form } from "@/components"
 import { ButtonsLayout, FormLayout } from "@/layouts"
+import { usePlan, useSteps } from "@/hooks"
+
+import { PlanOptions } from "./PlanOptions"
 
 export const Plans = () => {
+  const { prevStep, nextStep } = useSteps()
+  const { plan, savePlan } = usePlan()
+
   return (
     <Form
-      defaultValues={{}}
+      defaultValues={plan}
       onSubmit={data => {
-        console.log(data)
+        savePlan(data)
+        nextStep()
       }}
       className="h-full"
     >
       <FormLayout>
-        <p>Hello World</p>
+        <PlanOptions />
         <ButtonsLayout>
-          <Button secondary>Go Back</Button>
+          <Button secondary onClick={prevStep}>
+            Go Back
+          </Button>
           <Button type="submit">Next Step</Button>
         </ButtonsLayout>
       </FormLayout>

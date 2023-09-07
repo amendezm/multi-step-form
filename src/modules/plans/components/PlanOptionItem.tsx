@@ -3,21 +3,28 @@ import { FC } from "react"
 
 interface PlanOptionItemProps {
   name: string
-  priceLabel: string
+  price: number
   icon: string
-  selected: boolean
+  isMonthlyPlan: boolean
+  isSelected: boolean
+  onClick(): void
 }
 
-export const PlanOptionItem: FC<PlanOptionItemProps> = ({ name, priceLabel, icon, selected }) => {
+export const PlanOptionItem: FC<PlanOptionItemProps> = ({ name, price, isMonthlyPlan, icon, isSelected, onClick }) => {
+  const planSuffix = isMonthlyPlan ? "mo" : "yr"
+
   return (
     <div
       className={classNames("p-4 rounded-md border border-light-gray cursor-pointer hover:bg-alabaster", {
-        "border-marine-blue bg-magnolia": selected
+        "border-marine-blue bg-magnolia": isSelected
       })}
+      onClick={onClick}
+      role="button"
     >
       <img src={icon} alt={name} className="mb-8" />
       <p className="text-marine-blue font-semibold mb-1 tracking-tight">{name}</p>
-      <p className="text-cool-gray text-sm font-medium">{priceLabel}</p>
+      <p className="text-cool-gray text-sm font-medium mb-1">{`${price}/${planSuffix}`}</p>
+      {!isMonthlyPlan && <p className="text-xs tracking-tight text-marine-blue font-medium">2 months free</p>}
     </div>
   )
 }
