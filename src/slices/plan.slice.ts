@@ -1,7 +1,6 @@
 import { StateCreator } from "zustand"
 
 export interface Plan {
-  id: number
   name: string
   price: number
   type: PlanType
@@ -15,7 +14,7 @@ export interface PlanSlice {
   resetPlan(): void
 }
 
-const initialPlanState: Plan = { id: 1, name: "Arcade", price: 9, type: "monthly" }
+const initialPlanState: Plan = { name: "Arcade", price: 9, type: "monthly" }
 
 export const createPlanSlice: StateCreator<PlanSlice> = set => ({
   plan: initialPlanState,

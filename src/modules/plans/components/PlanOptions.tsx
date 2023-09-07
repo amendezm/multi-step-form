@@ -13,19 +13,17 @@ export const PlanOptions = () => {
     watch,
     setValue
   } = useFormContext<Plan>()
-  const [isMonthlyPlanSelected, setIsMonthlyPlanSelected] = useState(plan?.type === "yearly")
-  const [selectedPlanId, setSelectedPlanId] = useState(plan?.id)
+  const [isMonthlyPlanSelected, setIsMonthlyPlanSelected] = useState(plan?.type === "monthly")
+  const [selectedPlanName, setSelectedPlanName] = useState(plan?.name)
 
-  const handlePlanOptionClick = (planId: number) => {
-    const { name, monthlyPrice, yearlyPrice } = planOptions.find(({ id }) => id === planId) ?? {}
-    setValue("id", planId)
-    setValue("name", name ?? "")
-    setValue("price", isMonthlyPlanSelected ? monthlyPrice || 0 : yearlyPrice || 0)
+  const handlePlanOptionClick = (name: string, price: number) => {
+    setValue("name", name)
+    setValue("price", price)
   }
 
   useEffect(() => {
-    const subscription = watch(({ type, id }) => {
-      setSelectedPlanId(id)
+    const subscription = watch(({ type, name }) => {
+      setSelectedPlanName(name)
       setIsMonthlyPlanSelected(type === "monthly")
     })
 
@@ -34,15 +32,15 @@ export const PlanOptions = () => {
 
   return (
     <ul className="grid grid-cols-3 gap-4">
-      {planOptions.map(({ id, name, monthlyPrice, yearlyPrice, icon }) => (
-        <li key={id} className="grow shrink-0">
+      {planOptions.map(({ name, monthlyPrice, yearlyPrice, icon }, index) => (
+        <li key={index} className="grow shrink-0">
           <PlanOptionItem
             name={name}
             icon={icon}
             price={isMonthlyPlanSelected ? monthlyPrice : yearlyPrice}
             isMonthlyPlan={isMonthlyPlanSelected}
-            isSelected={id === selectedPlanId}
-            onClick={() => handlePlanOptionClick(id)}
+            isSelected={name === selectedPlanName}
+            onClick={() => handlePlanOptionClick(name, isMonthlyPlanSelected ? monthlyPrice : yearlyPrice)}
           />
         </li>
       ))}
