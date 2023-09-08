@@ -2,6 +2,8 @@ import { Button, Form } from "@/components"
 import { ButtonsLayout, FormLayout } from "@/layouts"
 import { useSteps } from "@/hooks"
 
+import { AddOnsOptions } from "./AddOnsOptions"
+
 export const AddOns = () => {
   const { prevStep } = useSteps()
 
@@ -15,7 +17,7 @@ export const AddOns = () => {
       className="h-full"
     >
       <FormLayout>
-        <p>Hello World</p>
+        <AddOnsOptions />
         <ButtonsLayout>
           <Button secondary onClick={prevStep}>
             Go Back

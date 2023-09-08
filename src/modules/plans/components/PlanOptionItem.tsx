@@ -15,7 +15,7 @@ export const PlanOptionItem: FC<PlanOptionItemProps> = ({ name, price, isMonthly
 
   return (
     <div
-      className={classNames("p-4 rounded-md border border-light-gray cursor-pointer hover:border-purplish-blue", {
+      className={classNames("p-4 rounded-lg border border-light-gray cursor-pointer hover:border-purplish-blue", {
         "border-purplish-blue bg-alabaster": isSelected
       })}
       onClick={onClick}
