@@ -7,10 +7,12 @@ import {
   createPersonalInfoSlice,
   PersonalInfoSlice,
   PlanSlice,
-  createPlanSlice
+  createPlanSlice,
+  AddOnsSlice,
+  createAddOnsSlice
 } from "./slices"
 
-type StoreType = StepsSlice & PersonalInfoSlice & PlanSlice
+type StoreType = StepsSlice & PersonalInfoSlice & PlanSlice & AddOnsSlice
 
 export const useStore = create<StoreType, [["zustand/devtools", never], ["zustand/persist", StoreType]]>(
   devtools(
@@ -18,7 +20,8 @@ export const useStore = create<StoreType, [["zustand/devtools", never], ["zustan
       (...a) => ({
         ...createStepsSlice(...a),
         ...createPersonalInfoSlice(...a),
-        ...createPlanSlice(...a)
+        ...createPlanSlice(...a),
+        ...createAddOnsSlice(...a)
       }),
       { name: "@store" }
     )
