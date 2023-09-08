@@ -1,20 +1,16 @@
-import { useState } from "react"
-import { useFormContext } from "react-hook-form"
+import { useController } from "react-hook-form"
 
 import { Switch } from "@/components"
 import { classNames } from "@/utils"
-import { Plan } from "slices"
 
 export const PlanTypeSelector = () => {
   const {
-    formState: { defaultValues },
-    setValue
-  } = useFormContext<Plan>()
-  const [checked, setChecked] = useState(defaultValues?.type === "yearly")
+    field: { value: planType, onChange }
+  } = useController({ name: "type" })
+  const checked = planType === "yearly"
 
   const handleChange = (checked: boolean) => {
-    setValue("type", checked ? "yearly" : "monthly")
-    setChecked(checked)
+    onChange(checked ? "yearly" : "monthly")
   }
 
   return (
