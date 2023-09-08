@@ -1,18 +1,19 @@
 import { Button, Form } from "@/components"
 import { ButtonsLayout, FormLayout } from "@/layouts"
-import { useSteps } from "@/hooks"
+import { useAddOns, useSteps } from "@/hooks"
 
 import { AddOnsOptions } from "./AddOnsOptions"
 
 export const AddOns = () => {
-  const { prevStep } = useSteps()
+  const { prevStep, nextStep } = useSteps()
+  const { addOns, saveAddOns } = useAddOns()
 
   return (
     <Form
-      defaultValues={{}}
-      onSubmit={data => {
-        console.log(data)
-        // nextStep()
+      defaultValues={{ addOns }}
+      onSubmit={({ addOns }) => {
+        saveAddOns(addOns)
+        nextStep()
       }}
       className="h-full"
     >

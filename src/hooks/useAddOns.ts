@@ -1,12 +1,11 @@
 import { useStore } from "@store"
 
 export const useAddOns = () => {
-  const { addOns, addAddOn, removeAddOn, resetAddOns } = useStore(({ addOns, addAddOn, removeAddOn, resetAddOns }) => ({
+  const { addOns, saveAddOns, resetAddOns } = useStore(({ addOns, saveAddOns, resetAddOns }) => ({
     addOns,
-    addAddOn,
-    removeAddOn,
+    saveAddOns,
     resetAddOns
   }))
 
-  return { addOns, addAddOn, removeAddOn, resetAddOns }
+  return { addOns, saveAddOns, resetAddOns }
 }
