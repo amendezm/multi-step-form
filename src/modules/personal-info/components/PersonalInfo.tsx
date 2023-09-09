@@ -53,6 +53,6 @@ const validateEmail = (email: string) => {
 }
 
 const validatePhoneNumber = (phoneNumber: string) => {
-  const res = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/
+  const res = /^(\+1)?[- ]?\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/
   return res.test(String(phoneNumber).toLowerCase()) || "Invalid phone number"
 }
