@@ -13,5 +13,5 @@ export const createStepsSlice: StateCreator<StepsSlice> = set => ({
   goToStep: step => set(() => ({ step })),
   prevStep: () => set(state => ({ step: state.step - 1 })),
   nextStep: () => set(state => ({ step: state.step + 1 })),
-  resetStep: () => set(() => ({ step: 1 }))
+  resetStep: () => set(() => ({ step: 0 }))
 })

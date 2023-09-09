@@ -2,13 +2,24 @@ import { useNavigate } from "react-router-dom"
 
 import { Button } from "@/components"
 import { ButtonsLayout, FormLayout } from "@/layouts"
-import { useSteps } from "@/hooks"
+import { useAddOns, usePersonalInfo, usePlan, useSteps } from "@/hooks"
 
 import { Summary } from "./Summary"
 
 export const FinishUp = () => {
-  const { prevStep } = useSteps()
+  const { prevStep, resetStep } = useSteps()
+  const { resetInfo } = usePersonalInfo()
+  const { resetPlan } = usePlan()
+  const { resetAddOns } = useAddOns()
   const navigate = useNavigate()
+
+  const handleConfirm = () => {
+    resetInfo()
+    resetPlan()
+    resetAddOns()
+    resetStep()
+    navigate("/thank-you")
+  }
 
   return (
     <FormLayout>
@@ -17,7 +28,7 @@ export const FinishUp = () => {
         <Button secondary onClick={prevStep}>
           Go Back
         </Button>
-        <Button className="bg-purplish-blue" onClick={() => navigate("/thank-you")}>
+        <Button className="bg-purplish-blue" onClick={handleConfirm}>
           Confirm
         </Button>
       </ButtonsLayout>
