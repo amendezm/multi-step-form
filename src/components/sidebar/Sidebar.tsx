@@ -2,6 +2,7 @@ import { useSteps } from "@/hooks"
 import { classNames } from "@/utils"
 
 import sidebarBg from "@/assets/bg-sidebar-desktop.svg"
+import sidebarBgMobile from "@/assets/bg-sidebar-mobile.svg"
 
 const stepsTitles = ["Your Info", "Select Plan", "Add-Ons", "Summary"]
 
@@ -9,9 +10,10 @@ export const Sidebar = () => {
   const { step } = useSteps()
 
   return (
-    <div className="w-full h-full relative">
-      <img src={sidebarBg} className="absolute rounded-xl h-full w-full object-cover z-10" />
-      <ul className="relative p-8 flex flex-col z-20 space-y-6">
+    <div className="w-full h-48 md:h-full relative">
+      <img src={sidebarBg} className="hidden md:block absolute rounded-xl h-full w-full object-cover z-10" />
+      <img src={sidebarBgMobile} className="block md:hidden absolute h-full w-full object-cover z-10" />
+      <ul className="relative p-8 pt-12 md:pt-8 flex justify-center md:flex-col z-20 gap-4 md:gap-6">
         {stepsTitles.map((stepTitle, index) => (
           <li key={index} className="flex items-center gap-4">
             <div
@@ -23,7 +25,7 @@ export const Sidebar = () => {
                 {index + 1}
               </span>
             </div>
-            <div className="flex flex-col uppercase">
+            <div className="hidden md:flex flex-col uppercase">
               <span className="text-xs text-cool-gray">Step {index + 1}</span>
               <p className="text-alabaster text-sm font-semibold tracking-wider">{stepTitle}</p>
             </div>

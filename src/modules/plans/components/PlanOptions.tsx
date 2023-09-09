@@ -39,7 +39,7 @@ export const PlanOptions = () => {
   }, [isMonthlyPlanSelected, selectedPlanName, setValue])
 
   return (
-    <ul className="grid grid-cols-3 gap-4">
+    <ul className="flex flex-col md:grid md:grid-cols-3 gap-4">
       {planOptions.map(({ name, monthlyPrice, yearlyPrice, icon }, index) => (
         <li key={index} className="grow shrink-0">
           <PlanOptionItem

@@ -7,7 +7,7 @@ import { ThankYou } from "@/components"
 function App() {
   return (
     <BrowserRouter>
-      <main className="min-h-screen py-12 grid place-content-center bg-magnolia">
+      <main className="min-h-screen md:h-auto md:py-12 md:grid md:place-content-center bg-magnolia">
         <Routes>
           <Route path="/" element={<AppLayout />}>
             <Route index element={<StepsContainer />} />

@@ -1,14 +1,18 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, useLocation } from "react-router-dom"
 
 import { Sidebar } from "@/components"
 
 export const AppLayout = () => {
+  const { pathname } = useLocation()
+  const showBottomBg = pathname === "/"
+
   return (
-    <section className="bg-white rounded-xl p-4 h-[560px] w-[860px] shadow-3xl grid grid-cols-3">
-      <div className="col-span-1 mr-4">
+    <section className="min-h-screen md:min-h-fit md:bg-white md:rounded-xl md:p-4 h-full md:h-[560px] md:w-[860px] md:shadow-3xl grid grid-rows-4 md:grid-rows-1 md:grid-cols-3">
+      <div className="row-span-1 md:col-span-1 md:mr-4">
         <Sidebar />
       </div>
-      <div className="col-span-2">
+      <div className="relative row-span-3 md:col-span-2 -mt-[20%] md:mt-0 z-20">
+        {showBottomBg && <div className="absolute bg-white bottom-0 w-full h-20 md:hidden" />}
         <Outlet />
       </div>
     </section>
