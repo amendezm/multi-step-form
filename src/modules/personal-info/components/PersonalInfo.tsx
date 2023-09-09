@@ -35,7 +35,7 @@ export const PersonalInfo = () => {
         <Field
           name="phone"
           label="Phone Number"
-          placeholder="e.g. +1 234 567 890"
+          placeholder="e.g. +1 234 567 8901"
           options={{ required: true, validate: { invalidPhoneNumber: validatePhoneNumber } }}
           inputMode="tel"
         />
