@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Screenshot
 
-![image](https://github.com/amendezm/multi-step-form/assets/26444448/49d91c80-d9b8-4f89-b931-83d79a6945d2)
+![screely-1694274258146](https://github.com/amendezm/multi-step-form/assets/26444448/29ff5f61-c910-4b40-b08e-50768ffdf723)
 
 
 
