@@ -1,12 +1,15 @@
 import { useStore } from "@store"
 
 export const useSteps = () => {
-  const { step, nextStep, prevStep, resetStep } = useStore(({ step, prevStep, nextStep, resetStep }) => ({
-    step,
-    nextStep,
-    prevStep,
-    resetStep
-  }))
+  const { step, goToStep, nextStep, prevStep, resetStep } = useStore(
+    ({ step, goToStep, prevStep, nextStep, resetStep }) => ({
+      step,
+      goToStep,
+      nextStep,
+      prevStep,
+      resetStep
+    })
+  )
 
-  return { step, nextStep, prevStep, resetStep }
+  return { step, goToStep, nextStep, prevStep, resetStep }
 }

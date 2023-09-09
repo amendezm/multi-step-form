@@ -1,19 +1,22 @@
 import { Fragment, useMemo } from "react"
 
-import { useAddOns, usePlan } from "@/hooks"
+import { useAddOns, usePlan, useSteps } from "@/hooks"
 import { capitalize } from "@/utils"
 
+const PLANS_STEP = 1
+
 export const Summary = () => {
+  const { goToStep } = useSteps()
   const {
     plan: { type: planType, name: planName, price: planPrice }
   } = usePlan()
-  const priceSuffix = planType === "monthly" ? "mo" : "yr"
-  const totalSuffix = planType === "monthly" ? "month" : "year"
   const { addOns } = useAddOns()
   const totalPrice = useMemo(
     () => addOns.reduce((acc, current) => acc + current.price, 0) + planPrice,
     [addOns, planPrice]
   )
+  const priceSuffix = planType === "monthly" ? "mo" : "yr"
+  const totalSuffix = planType === "monthly" ? "month" : "year"
 
   return (
     <Fragment>
@@ -23,7 +26,12 @@ export const Summary = () => {
             <span className="text-marine-blue tracking-tight font-medium">
               {planName} {`(${capitalize(planType)})`}
             </span>
-            <button className="text-cool-gray tracking-tight font-medium text-sm underline">Change</button>
+            <button
+              className="text-cool-gray tracking-tight font-medium text-sm underline"
+              onClick={() => goToStep(PLANS_STEP)}
+            >
+              Change
+            </button>
           </div>
           <div className="text-marine-blue font-semibold tracking-tight">
             ${planPrice}/{priceSuffix}

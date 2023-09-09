@@ -13,7 +13,7 @@ export const PlanOptions = () => {
     watch,
     setValue
   } = useFormContext<Plan>()
-  const [isMonthlyPlanSelected, setIsMonthlyPlanSelected] = useState(plan?.type === "yearly")
+  const [isMonthlyPlanSelected, setIsMonthlyPlanSelected] = useState(plan?.type === "monthly")
   const [selectedPlanName, setSelectedPlanName] = useState(plan?.name)
 
   const handlePlanOptionClick = (name: string) => {

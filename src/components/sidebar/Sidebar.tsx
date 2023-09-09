@@ -16,12 +16,10 @@ export const Sidebar = () => {
           <li key={index} className="flex items-center gap-4">
             <div
               className={classNames("flex items-center justify-center w-8 h-8 rounded-full border border-light-gray", {
-                "bg-light-blue border-light-blue": step === index + 1
+                "bg-light-blue border-light-blue": step === index
               })}
             >
-              <span
-                className={classNames("text-white font-semibold text-sm", { "text-marine-blue": step === index + 1 })}
-              >
+              <span className={classNames("text-white font-semibold text-sm", { "text-marine-blue": step === index })}>
                 {index + 1}
               </span>
             </div>

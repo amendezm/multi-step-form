@@ -5,7 +5,7 @@ const stepsModules = [new PersonalInfoModule(), new PlansModule(), new AddOnsMod
 
 export const StepsContainer = () => {
   const { step } = useSteps()
-  const currentStepModule = stepsModules[step - 1]
+  const currentStepModule = stepsModules[step]
 
   const { title, description, renderElement } = currentStepModule
 
